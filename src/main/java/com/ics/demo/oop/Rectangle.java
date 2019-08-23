@@ -1,4 +1,4 @@
-package com.ics.demo;
+package com.ics.demo.oop;
 
 public class Rectangle extends Shape implements Shape.PerimeterInterface {
 

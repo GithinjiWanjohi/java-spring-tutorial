@@ -1,4 +1,4 @@
-package com.ics.demo;
+package com.ics.demo.oop;
 
 public class TestingOop {
 
@@ -8,7 +8,7 @@ public class TestingOop {
         Triangle triangle = new Triangle(12,12,ShapeType.TWO_D);
 
         System.out.println(rectangle.toString());
-        System.out.println(circle.toString());
+        System.err.println(circle.toString());
         System.out.println(triangle.toString());
     }
 }
