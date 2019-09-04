@@ -2,10 +2,8 @@ package com.ics.demo.controller;
 
 import com.ics.demo.models.Movie;
 import com.ics.demo.service.MovieService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,25 @@ public class MovieController {
     @GetMapping(value = "{id}")
     public Movie findbyId(@PathVariable Long id){
         return movieService.findById(id);
+    }
+
+    @PostMapping
+    public Movie create(@Validated(Movie.Create.class) @RequestBody Movie movie){
+        return movieService.create(movie);
+    }
+
+    @DeleteMapping
+    public void delete(@PathVariable Long id){
+        movieService.delete(id);
+    }
+
+    @PatchMapping
+    public Movie update(@Validated(Movie.Update.class) @RequestBody Movie movie){
+        return movieService.update(movie);
+    }
+
+    @PatchMapping(value = "{id}")
+    public Movie update(@PathVariable Long id, @RequestBody Movie movie){
+        return movieService.update(id, movie);
     }
 }

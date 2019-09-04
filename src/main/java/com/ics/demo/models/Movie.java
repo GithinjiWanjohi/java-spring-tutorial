@@ -1,6 +1,7 @@
 package com.ics.demo.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "movies")
@@ -9,9 +10,11 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
+    @NotNull(groups = Update.class)
     private Long id;
 
     @Column(name = "name")
+    @NotNull(groups = Create.class)
     private String name;
 
     @Column(name = "year_released")
@@ -49,4 +52,8 @@ public class Movie {
     public void setYearReleased(String yearReleased) {
         this.yearReleased = yearReleased;
     }
+
+    public interface Create{}
+
+    public interface Update{}
 }
