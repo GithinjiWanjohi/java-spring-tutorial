@@ -1,5 +1,6 @@
 package com.ics.demo.controller;
 
+import com.ics.demo.models.Actor;
 import com.ics.demo.models.Movie;
 import com.ics.demo.service.MovieService;
 import org.springframework.validation.annotation.Validated;
@@ -7,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// http:localhost:8080/movies
+// http:localhost:8080/movies/
 @RestController
 @RequestMapping(value = "movies")
 public class MovieController {
@@ -24,7 +25,7 @@ public class MovieController {
     }
 
     @GetMapping(value = "{id}")
-    public Movie findbyId(@PathVariable Long id){
+    public Movie findById(@PathVariable Long id){
         return movieService.findById(id);
     }
 
@@ -46,5 +47,10 @@ public class MovieController {
     @PatchMapping(value = "{id}")
     public Movie update(@PathVariable Long id, @RequestBody Movie movie){
         return movieService.update(id, movie);
+    }
+
+    @PostMapping(value = "{id}/actors")
+    public Actor create(@PathVariable Long id, @RequestBody Actor actor){
+        return movieService.createActor(id,actor);
     }
 }

@@ -8,11 +8,11 @@ import java.util.List;
 public interface ActorService {
     List<Actor> findAll();
 
-    Actor findByID(Long id);
+    Actor findById(Long id);
 
     Actor create(Actor actor);
 
-    void delete(Actor actor);
+    void delete(Long id);
 
     Actor update(Actor actor);
 

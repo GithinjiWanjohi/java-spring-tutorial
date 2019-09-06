@@ -1,5 +1,6 @@
 package com.ics.demo.service;
 
+import com.ics.demo.models.Actor;
 import com.ics.demo.models.Movie;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface MovieService {
     Movie update(Movie movie);
 
     Movie update(Long id, Movie movie);
+
+    Actor createActor(Long id, Actor actor);
 }
