@@ -2,6 +2,7 @@ package com.ics.demo.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -19,6 +20,9 @@ public class Movie {
 
     @Column(name = "year_released")
     private String yearReleased;
+
+    @OneToMany(mappedBy = "movie")
+    private List<Actor> actor;
 
     public Movie(String name, String year) {
         this.name = name;
@@ -51,6 +55,14 @@ public class Movie {
 
     public void setYearReleased(String yearReleased) {
         this.yearReleased = yearReleased;
+    }
+
+    public List<Actor> getActor() {
+        return actor;
+    }
+
+    public void setActor(List<Actor> actor) {
+        this.actor = actor;
     }
 
     public interface Create{}

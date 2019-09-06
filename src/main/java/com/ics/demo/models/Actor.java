@@ -1,5 +1,7 @@
 package com.ics.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -17,9 +19,12 @@ public class Actor {
     @NotNull(groups = Create.class)
     private String name;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "movie_id_fk")
     private Movie movie;
+
+    public Actor(){}
 
     public Actor(String name, Movie movie) {
         this.name = name;
