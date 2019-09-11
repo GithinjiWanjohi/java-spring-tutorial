@@ -2,7 +2,9 @@ package com.ics.demo.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "movies")
@@ -24,9 +26,13 @@ public class Movie {
     @OneToMany(mappedBy = "movie")
     private List<Actor> actor;
 
-    public Movie(String name, String year) {
+    @ManyToMany(mappedBy = "movies")
+    private Set<Category> categories = new HashSet<>();
+
+    public Movie(String name, String yearReleased, Set<Category> categories) {
         this.name = name;
-        this.yearReleased = year;
+        this.yearReleased = yearReleased;
+        this.categories.addAll(categories);
     }
 
     private Movie(){
@@ -63,6 +69,14 @@ public class Movie {
 
     public void setActor(List<Actor> actor) {
         this.actor = actor;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 
     public interface Create{}
