@@ -1,5 +1,7 @@
 package com.ics.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +17,7 @@ public class Category {
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "category_movies",
@@ -44,6 +47,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(Set<Movie> movies) {
+        this.movies = movies;
     }
 
     public void addMovie(Movie movie){

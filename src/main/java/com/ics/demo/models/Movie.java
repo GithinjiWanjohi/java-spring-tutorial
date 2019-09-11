@@ -29,10 +29,9 @@ public class Movie {
     @ManyToMany(mappedBy = "movies")
     private Set<Category> categories = new HashSet<>();
 
-    public Movie(String name, String yearReleased, Set<Category> categories) {
+    public Movie(String name, String yearReleased) {
         this.name = name;
         this.yearReleased = yearReleased;
-        this.categories.addAll(categories);
     }
 
     private Movie(){

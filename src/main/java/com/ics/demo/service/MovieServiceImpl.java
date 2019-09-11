@@ -4,6 +4,7 @@ import com.ics.demo.NotFoundException;
 import com.ics.demo.models.Actor;
 import com.ics.demo.models.Movie;
 import com.ics.demo.repositories.ActorRepository;
+import com.ics.demo.repositories.CategoryRepository;
 import com.ics.demo.repositories.MovieRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;

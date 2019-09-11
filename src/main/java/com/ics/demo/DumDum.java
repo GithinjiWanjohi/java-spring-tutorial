@@ -28,15 +28,15 @@ public class DumDum implements CommandLineRunner {
 
 
 
-        Movie movie = new Movie("Dumb and Dumber", "2019", category);
-        category.addMovie(movie);
-        categoryRepository.save(category);
+        Movie movie = new Movie("Dumb and Dumber", "2019");
         movieRepository.save(movie);
-
-
-        Movie movie2 = new Movie("The Cleverest", "2007", category);
         category.addMovie(movie);
         categoryRepository.save(category);
-        movieRepository.save(movie2);
+
+
+        Movie movie1 = new Movie("The Cleverest", "2007");
+        movieRepository.save(movie1);
+        category1.addMovie(movie1);
+        categoryRepository.save(category1);
     }
 }
