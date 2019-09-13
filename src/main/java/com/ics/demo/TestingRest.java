@@ -26,5 +26,18 @@ public class TestingRest implements CommandLineRunner {
         );
         List<Movie> movies = response.getBody();
         System.out.println(movies.toString());
+
+        Movie movie = restTemplate.getForObject(
+                "http://10.51.10.111:9090/movies/4",
+                Movie.class
+        );
+        System.err.println(movie.toString());
+
+        String url = "http://10.51.10.111:9090/movies/search?name=" +movie.getName();
+        Movie movieByName = restTemplate.getForObject(
+                url,
+                Movie.class
+        );
+        System.err.println(movie.toString());
     }
 }
