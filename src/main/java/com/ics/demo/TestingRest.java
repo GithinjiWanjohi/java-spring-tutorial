@@ -8,14 +8,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 @Component
 public class TestingRest implements CommandLineRunner {
 
+    private final FeignRestClient feignRestClient;
+
+    public TestingRest(FeignRestClient feignRestClient) {
+        this.feignRestClient = feignRestClient;
+    }
+
     @Override
     public void run(String... args) throws Exception {
+
+        Movie newMovie = new Movie("Its fucking Wednesday", "2019");
+        newMovie = feignRestClient.createMovie(newMovie);
+        System.out.println("Created movie: " + newMovie.toString());
+
         RestTemplate restTemplate = new RestTemplate();
 
         ResponseEntity<List<Movie>> response = restTemplate.exchange(
@@ -39,5 +49,8 @@ public class TestingRest implements CommandLineRunner {
                 Movie.class
         );
         System.err.println(movie.toString());
+
+        movies = feignRestClient.getAllMovies();
+        System.err.println(movies);
     }
 }
