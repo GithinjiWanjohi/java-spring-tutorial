@@ -22,8 +22,13 @@ public class TestingRest implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Movie newMovie = new Movie("Its fucking Wednesday", "2019");
+        Movie newMovie = new Movie("Its Home Time", "2019");
         newMovie = feignRestClient.createMovie(newMovie);
+        System.out.println("Created movie: " + newMovie.toString());
+
+        newMovie.setName("You Again");
+        newMovie.setYearReleased("2019");
+        feignRestClient.updateMovie(newMovie.getId(), newMovie);
         System.out.println("Created movie: " + newMovie.toString());
 
         RestTemplate restTemplate = new RestTemplate();

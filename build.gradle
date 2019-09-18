@@ -23,6 +23,8 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    compile group: 'io.github.openfeign', name: 'feign-httpclient', version: '10.4.0'
+
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 }
 
