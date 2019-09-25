@@ -1,8 +1,6 @@
 package com.ics.demo;
 
-import com.ics.demo.models.Appointment;
-import com.ics.demo.models.Movie;
-import com.ics.demo.models.Student;
+import com.ics.demo.models.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -61,15 +59,26 @@ public class TestingRest implements CommandLineRunner {
 //        System.err.println(movies);
 
 
-        Student newStudent = new Student("92263", "Githinji");
-//        newStudent = feignRestClient.createStudent(newStudent);
-        //System.out.println("Created student: " + newStudent.toString());
+//        Student newStudent = feignRestClient.createStudent(new Student(124343L, "Alfie"));
+//        System.out.println("Created student: " + newStudent.toString());
 
-        Appointment newAppointment = new Appointment(8, 3);
-        feignRestClient.createAppointment(newAppointment);
-        System.out.println("Created appointment: " + newAppointment.toString());
+//        Appointment newAppointment = feignRestClient.createAppointment(new Appointment(newStudent.getStudentNumber(), (long) 1));
+//        System.out.println("Created appointment: " + newAppointment.toString());
 
-        feignRestClient.updateAppointment((long)10, (long)8);
+//        feignRestClient.updateAppointment(newAppointment.getAppointmentId(), newStudent.getStudentNumber());
+//        System.out.println("Created appointment: " + newAppointment.toString());
 
+
+        /**
+         * CAT 1
+         * */
+
+        Student studentNew = feignRestClient.createStudentCAT(new StudentCAT("92263", "Githinji"));
+
+        AttachmentCAT attachmentCAT = feignRestClient.createAttachment(7L, 26L);
+
+         feignRestClient.requestDepartment(attachmentCAT.getCompanyId(), studentNew.getStudentNumber(), 12L);
+
+        feignRestClient.deleteRequest(new DepartmentCAT(10L,26L,7L));
     }
 }

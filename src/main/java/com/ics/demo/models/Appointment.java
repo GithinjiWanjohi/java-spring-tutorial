@@ -3,14 +3,23 @@ package com.ics.demo.models;
 
 public class Appointment {
 
-    private int studentId;
-    private int teacherId;
+//    private Long appointmentId;
+    private Long studentId;
+    private Long teacherId;
     private boolean confirmed;
 
-    public Appointment(int studentId, int teacherId) {
+    public Appointment(Long studentId, Long teacherId) {
         this.studentId = studentId;
         this.teacherId = teacherId;
     }
+
+//    public long getAppointmentId() {
+//        return appointmentId;
+//    }
+
+//    public void setAppointmentId(long appointmentId) {
+//        this.appointmentId = appointmentId;
+//    }
 
     public boolean isConfirmed() {
         return confirmed;
@@ -20,19 +29,28 @@ public class Appointment {
         this.confirmed = confirmed;
     }
 
-    public int getStudentId() {
+    public Long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
 
-    public int getTeacherId() {
+    public Long getTeacherId() {
         return teacherId;
     }
 
-    public void setTeacherId(int teacherId) {
+    public void setTeacherId(Long teacherId) {
         this.teacherId = teacherId;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "studentId=" + studentId +
+                ", teacherId=" + teacherId +
+                ", confirmed=" + confirmed +
+                '}';
     }
 }

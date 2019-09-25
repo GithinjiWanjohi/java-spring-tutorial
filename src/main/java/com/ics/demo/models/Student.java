@@ -11,7 +11,7 @@ public class Student {
     private Long id;
 
     @Column(name = "student_number")
-    private String studentNumber;
+    private Long studentNumber;
 
     @Column(name = "first_name")
     private String firstName;
@@ -19,7 +19,7 @@ public class Student {
     @Column(name = "score")
     private int score = 0;
 
-    public Student(String studentNumber, String firstName) {
+    public Student(Long studentNumber, String firstName) {
         this.studentNumber = studentNumber;
         this.firstName = firstName;
     }
@@ -35,11 +35,11 @@ public class Student {
         this.id = id;
     }
 
-    public String getStudentNumber() {
+    public Long getStudentNumber() {
         return studentNumber;
     }
 
-    public void setStudentNumber(String studentNumber) {
+    public void setStudentNumber(Long studentNumber) {
         this.studentNumber = studentNumber;
     }
 
@@ -57,5 +57,15 @@ public class Student {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", studentNumber='" + studentNumber + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", score=" + score +
+                '}';
     }
 }
